@@ -6,7 +6,6 @@ from PySide2.QtGui import QIcon, QStandardItem, QStandardItemModel
 from mainWindow import Ui_MainWindow
 
 ## TODO: populate dependencies with tree view of everything!
-RECIPE_DIR = "~/dev/visualize/hps/"
 
 class MainWindow(QMainWindow, Ui_MainWindow):
 
@@ -26,12 +25,8 @@ if __name__ == "__main__":
     w = MainWindow()
 
     options_model = QStandardItemModel(w.optionsListView)
-    for option in conan.get_options():
-        #TODO: Clean this up and get it out of ui init before it gets out of hand
-        opt = option.split(":")
-        value = opt.pop().strip()
-        key = ":".join(opt)
-        individual_option = QStandardItem(key)
+    for option, value in conan.get_options().items():
+        individual_option = QStandardItem(option)
         individual_option.setCheckable(True)
         individual_option.setEditable(False)
         if value == "True":
