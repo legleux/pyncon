@@ -19,6 +19,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @Slot()
     def hs(self):
         print(self.conanfilePathLineEdit.text())
+    @Slot()
+    def update_profile_lineEdit(self): # TODO: maybe make this a list from the available profiles
+        fileName = QFileDialog.getOpenFileName(self, "Load Profile",
+                                       "/Users/emel/.conan/profiles/",
+                                       "Profile (*)")
+        print(fileName[0])
+        self.profileLineEdit.setText(fileName[0])
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -58,8 +65,8 @@ if __name__ == "__main__":
         print("last is " +  last_setting)
 
     w.settingsTreeView.setModel(settings_model)
-
-
+    w.generatePushButton.clicked.connect(w.cs)
+    w.profilePushButton.clicked.connect(w.update_profile_lineEdit)
 
 
     w.generatePushButton.clicked.connect(w.cs)
