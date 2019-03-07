@@ -52,16 +52,29 @@
            <property name="checkable">
             <bool>false</bool>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <widget class="QListView" name="settingsListView">
-              <property name="toolTip">
-               <string extracomment="settings are set by profiles">butts muthafucka!!!!!!!!</string>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMinimumSize</enum>
               </property>
-              <property name="toolTipDuration">
-               <number>4000</number>
+              <property name="bottomMargin">
+               <number>0</number>
               </property>
-             </widget>
+              <item>
+               <widget class="QPushButton" name="profilePushButton">
+                <property name="text">
+                 <string>Profile</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="profileLineEdit"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTreeView" name="settingsTreeView"/>
             </item>
            </layout>
           </widget>
@@ -73,7 +86,7 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
-             <widget class="QListView" name="dependenciesListView"/>
+             <widget class="QTreeView" name="dependenciesTreeView"/>
             </item>
            </layout>
           </widget>
@@ -96,20 +109,50 @@
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="generatePushButton">
-      <property name="toolTip">
-       <string comment="click me"/>
-      </property>
-      <property name="statusTip">
-       <string extracomment="cool"/>
-      </property>
-      <property name="whatsThis">
-       <string extracomment="what"/>
-      </property>
-      <property name="text">
-       <string>Generate</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="generatePushButton">
+        <property name="toolTip">
+         <string comment="click me"/>
+        </property>
+        <property name="statusTip">
+         <string extracomment="cool"/>
+        </property>
+        <property name="whatsThis">
+         <string extracomment="what"/>
+        </property>
+        <property name="text">
+         <string>Generate...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -127,7 +170,6 @@
  </widget>
  <tabstops>
   <tabstop>optionsListView</tabstop>
-  <tabstop>settingsListView</tabstop>
  </tabstops>
  <resources/>
  <connections/>
