@@ -10,7 +10,7 @@ else:
     new_line = b'\n'
 
 def get_profile():
-    profile_output = subprocess.run("conan profile show default", stdout=subprocess.PIPE).stdout # preferred python
+    profile_output = subprocess.run(["conan", "profile", "show", "default"], stdout=subprocess.PIPE).stdout # preferred python
     cfg = [i.decode() for i in profile_output.split(new_line)]
     cfg.remove('') # what is really going on here?!?
     return "\n".join(cfg[1:])
