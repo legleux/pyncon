@@ -17,7 +17,7 @@ def get_profile():
 
 def get_settings():
     cfg = get_conan_config()
-    return cfg._sections['settings']
+    return cfg._sections
 
 def get_recipe_version():
     pass #TODO: get the recipe version
