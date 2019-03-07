@@ -32,8 +32,35 @@ if __name__ == "__main__":
         if value == "True":
             individual_option.setCheckState(Qt.Checked)
         options_model.appendRow(individual_option)
-
     w.optionsListView.setModel(options_model)
+
+    settings_model = QStandardItemModel(w.settingsTreeView)
+    #settings_model.
+    root_node = QStandardItem("poop")
+    #for i in range(3):
+    #    node = QStandardItem("another")
+    c = conan.get_settings()
+    for k,v in list(enumerate(c['settings'].items())):
+        print(k,v)
+        setting = QStandardItem(v[0])
+        value =  QStandardItem(v[1])
+
+        setting.setChild(0,value)
+        settings_model.appendRow(setting)
+        print(setting.text())
+#         if( k != 0):
+#             print("split")
+#             print(setting.text().split(".") or setting.text().split("_"))
+#             if setting.text().startswith(last_setting):
+# #                setting.appendRow(value)
+#                 print("set child of: "+str(k-1)+ " " + last_setting)
+        last_setting = setting.text()
+        print("last is " +  last_setting)
+
+    w.settingsTreeView.setModel(settings_model)
+
+
+
 
     w.generatePushButton.clicked.connect(w.cs)
     w.conanfilePathLineEdit.returnPressed.connect(w.hs)
